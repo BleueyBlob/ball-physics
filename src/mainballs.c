@@ -8,10 +8,9 @@
 # define substepamt 2
 # define grav 0.5
 
-
 // creating a color gradient 
 
-void gradient(Color color1, Color color2)
+void greenbluegradient(Color *color, int num, int total)
 {
 
 }
