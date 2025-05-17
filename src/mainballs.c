@@ -1,5 +1,6 @@
 #include <raylib.h>
 #include "physics.h"
+#include "color.h"
 
 
 # define screenwidth 800
@@ -8,13 +9,6 @@
 # define substepamt 2
 # define grav 0
 
-// creating a color gradient 
-
-void greenbluegradient(Color *color, int num, int total)
-{
-    float margin = (175 / (total - 1)) * num;
-    *color = (Color){0, (175 - margin), margin, 225};
-}
 
 
 int main()
@@ -51,12 +45,12 @@ int main()
         circles[i].acc[0] = 0;
         circles[i].acc[1] = grav;
 
-        greenbluegradient(&customcolor, i, ciramt);
+        gradient(sunsetpurple, sunsetpink, i, ciramt, &customcolor);
         circles[i].color = customcolor;
     }
 
-    circles[0].vel[0] = 2;
-    circles[0].vel[1] = -2;
+    circles[0].vel[0] = 5;
+    circles[0].vel[1] = -5;
 
 
     InitWindow(screenwidth, screenheight, "basic window");
