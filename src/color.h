@@ -9,10 +9,13 @@
 # define sunsetpurple (Color){116, 58, 109, 225}
 # define sunsetpink (Color){230, 53, 82, 225}
 
+# define lightblue (Color){173, 216, 230}
+# define sagegreen (Color){178, 172, 136}
+
 
 // gradient function
 
-void gradient(Color color1, Color color2, int num, int total, Color *result)
+void gradient(Color color1, Color color2, float num, float total, Color *result)
 {
     Vector3 margin = (Vector3){
         (((color1.r - color2.r) / (total - 1)) * num),
