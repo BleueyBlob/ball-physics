@@ -37,7 +37,7 @@ void twodielasticcoll(Circle *c1, Circle *c2)
     float vecunorm[2];
     float vecutan[2];
 
-    vectorsub(c2->vel, c1->vel, vecnorm, 2);
+    vectorsub(c2->pos, c1->pos, vecnorm, 2);
     vectornormandtan(vecnorm, vecunorm, vecutan);
 
     // step 2
