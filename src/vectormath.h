@@ -6,7 +6,7 @@ void dotproduct(float vector1[], float vector2[], float *result, int vectorsize)
     *result = 0;
 
     for(int i = 0; i < vectorsize; i++)
-        *result = *result + (vector1[i], vector2[i]);
+        *result = *result + (vector1[i] * vector2[i]);
 }
 
 
