@@ -5,7 +5,7 @@
 
 # define screenwidth 800
 # define screenheight 450
-# define ciramt 25
+# define ciramt 300
 # define substepamt 2
 # define grav 0
 # define initcir 9
@@ -20,6 +20,8 @@ int main()
     int j = 0;
     bool firstcol = true;
     
+    int firstradius = 15;
+    int radiusmargin = 0;
 
     Color customcolor;
 
@@ -29,10 +31,10 @@ int main()
 
     for(i = 0; i < ciramt; i++)
     {
-        circles[i].rad = 10 + k;
-        circles[i].mass = 10 + k;
+        circles[i].rad = firstradius + k;
+        circles[i].mass = firstradius + k;
 
-        if(k > 10)
+        if(k > radiusmargin - 1)
             k = 0;
         else 
             k++;
@@ -51,7 +53,7 @@ int main()
         } else if(firstcol == false)
             circles[i].pos[0] = circles[i].rad + circles[i - 1].pos[0] + circles[i - 1].rad;
 
-        circles[i].pos[1] = 40 * (j + 1);
+        circles[i].pos[1] = ((radiusmargin + firstradius) * 2) * (j + 1);
 
 
         circles[i].newpos[0] = 0;
@@ -61,7 +63,7 @@ int main()
         circles[i].acc[0] = 0;
         circles[i].acc[1] = grav;
 
-        gradient(sagegreen, lightblue, i, ciramt, &customcolor);
+        trigradient(sunsetyellow, sunsetpurple, sunsetpink, i, ciramt, &customcolor);
         circles[i].color = customcolor;
     }
 

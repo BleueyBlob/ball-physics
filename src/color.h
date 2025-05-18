@@ -31,3 +31,44 @@ void gradient(Color color1, Color color2, float num, float total, Color *result)
         225
     };
 }
+
+
+
+void trigradient(Color color1, Color color2, Color color3, float num, float total, Color *result)
+{
+    Vector3 margin;
+    
+    if(num < (total - 1) / 2)
+    {
+        margin = (Vector3){
+            (((color1.r - color2.r) / ((total - 1) / 2)) * num),
+            (((color1.g - color2.g) / ((total - 1) / 2)) * num),
+            (((color1.b - color2.b) / ((total - 1) / 2)) * num)
+        };
+
+        *result = (Color){
+            (color1.r - margin.x),
+            (color1.g - margin.y),
+            (color1.b - margin.z), 
+            225
+        };   
+    } else 
+    {
+        margin = (Vector3){
+            (((color2.r - color3.r) / ((total - 1) / 2)) * (num - (total - 1) / 2)),
+            (((color2.g - color3.g) / ((total - 1) / 2)) * (num - (total - 1) / 2)),
+            (((color2.b - color3.b) / ((total - 1) / 2)) * (num - (total - 1) / 2))
+        };    
+
+        *result = (Color){
+            (color2.r - margin.x),
+            (color2.g - margin.y),
+            (color2.b - margin.z), 
+            225
+        };   
+    }
+
+    
+    
+
+}
