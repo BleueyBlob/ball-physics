@@ -5,9 +5,9 @@
 
 # define screenwidth 800
 # define screenheight 450
-# define ciramt 100
+# define ciramt 25
 # define substepamt 2
-# define grav 0.5
+# define grav 0
 # define initcir 9
 
 
@@ -18,8 +18,9 @@ int main()
     int i = 0;
     int k = 0;
     int j = 0;
-    int z = 0;
+    bool firstcol = true;
     
+
     Color customcolor;
 
     int fps = 60;
@@ -28,21 +29,30 @@ int main()
 
     for(i = 0; i < ciramt; i++)
     {
-        circles[i].rad = 10 + z;
-        circles[i].mass = 10 + z;
-        if(z > 10)
-            z = 0;
-        else 
-            z++;
+        circles[i].rad = 10 + k;
+        circles[i].mass = 10 + k;
 
-        circles[i].pos[0] = 45 * (k + 1);
-        circles[i].pos[1] = 45 * (j + 1);
-        if(k > 15)
-        {
+        if(k > 10)
             k = 0;
-            j++;
-        } else
+        else 
             k++;
+
+
+        if(circles[i].rad + circles[i - 1].pos[0] + circles[i - 1].rad > screenwidth - circles[i].rad)
+        {
+            firstcol = true;
+            j++;
+        }
+            
+        if(firstcol == true)
+        {
+            circles[i].pos[0] = circles[i].rad;
+            firstcol = false;
+        } else if(firstcol == false)
+            circles[i].pos[0] = circles[i].rad + circles[i - 1].pos[0] + circles[i - 1].rad;
+
+        circles[i].pos[1] = 40 * (j + 1);
+
 
         circles[i].newpos[0] = 0;
         circles[i].newpos[1] = 0;
@@ -55,8 +65,8 @@ int main()
         circles[i].color = customcolor;
     }
 
-    circles[initcir].vel[0] = 2;
-    circles[initcir].vel[1] = 1;
+    circles[5].vel[0] = 4;
+    circles[3].vel[1] = -8;
 
 
     InitWindow(screenwidth, screenheight, "basic window");
